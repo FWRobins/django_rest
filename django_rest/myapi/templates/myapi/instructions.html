@@ -1,0 +1,37 @@
+{% include 'myapi/header.html' %}
+<div class="container">
+
+
+<h3>Api Usage via Python</h3>
+<br>
+<h2>Requirements</h2>
+<ol>
+  <li>Requests Module (pip install requests)</li>
+</ol>
+
+<h2>Get current entries</h2>
+<pre>
+  url = 'http://127.0.0.1:8000/api/heroes/'
+  headers = {'Authorization': 'Token {your token number here}'}
+  response = requests.get(url, headers = headers)
+  print(response.json())
+</pre>
+
+<h2>Add new entries</h2>
+<pre>
+  url = 'http://127.0.0.1:8000/api/heroes/'
+  headers = {'Authorization': 'Token {your token number here}'}
+  myobj = {'name':'Ironman',
+          'alias':'Tony Stark'}
+
+  requests.post(url, data=myobj, headers = headers)
+</pre>
+<h2>Get Auth Token</h2>
+<pre>
+  url = 'http://127.0.0.1:8000/api-token-auth/'
+  credentials = {'username':'your username', 'password':'your password'}
+  response = requests.post(url, data = credentials)
+  print(response.json())
+</pre>
+</div>
+{% include 'myapi/footer.html' %}
